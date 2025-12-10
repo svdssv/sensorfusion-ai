@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -89,44 +88,20 @@
           scrollbar-width: none;
       }
     </style>
-    <!-- Restore importmap for preview environments that don't run a build step -->
 
-    <script>
-      // Global error handler to help debug "white screen" issues
-      window.addEventListener('error', function(e) {
-        // Wait a bit to ensure React hasn't mounted
-        setTimeout(() => {
-          const root = document.getElementById('root');
-          if (root && root.innerHTML.trim() === '') {
-             const errDiv = document.createElement('div');
-             errDiv.style.color = '#ef4444';
-             errDiv.style.padding = '20px';
-             errDiv.style.background = '#0f172a';
-             errDiv.style.position = 'fixed';
-             errDiv.style.top = '0';
-             errDiv.style.left = '0';
-             errDiv.style.right = '0';
-             errDiv.style.zIndex = '9999';
-             errDiv.style.fontFamily = 'monospace';
-             errDiv.innerHTML = '<h3>Application Failed to Start</h3><p>Error: ' + e.message + '</p><p style="color:#94a3b8;font-size:0.8em">If deploying to GitHub Pages, ensure you have run "npm run build" and are deploying the "dist" folder, not the source code.</p>';
-             document.body.appendChild(errDiv);
-          }
-        }, 1000);
-      });
-    </script>
-  <link rel="stylesheet" href="/index.css">
-    <script type="importmap">
-    {
-      "imports": {
-        "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
-        "vite": "https://aistudiocdn.com/vite@^7.2.7",
-        "react/": "https://aistudiocdn.com/react@^19.2.1/",
-        "react": "https://aistudiocdn.com/react@^19.2.1",
-        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-        "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.2"
-      }
-    }
-    </script>
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "vite": "https://aistudiocdn.com/vite@^7.2.7",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
   <script type="module" crossorigin src="./assets/index-zq1Tr58I.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/vendor-KfUPlHYY.js">
   <link rel="modulepreload" crossorigin href="./assets/charts-DHwMDfXx.js">
