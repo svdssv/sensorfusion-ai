@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json" />
+    <title>SensorFusion AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      // Polyfill process for browser environment to prevent crashes in third-party libs
+      window.process = { env: {} };
+      
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              cyber: {
+                900: '#0f172a',
+                800: '#1e293b',
+                700: '#334155',
+                600: '#475569',
+                500: '#3b82f6',
+                400: '#60a5fa',
+                accent: '#06b6d4',
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.3s ease-out forwards',
+              'slide-up': 'slideUp 0.3s ease-out forwards',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #0f172a;
+        color: #e2e8f0;
+        -webkit-font-smoothing: antialiased;
+        overscroll-behavior-y: none; /* Prevent pull-to-refresh on mobile */
+      }
+      /* Custom scrollbar for webkit */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #334155; 
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #475569; 
+      }
+      /* Ensure video plays inline on iOS */
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      /* Hide scrollbar for layout elements but allow scroll */
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+    </style>
+    <!-- Restore importmap for preview environments that don't run a build step -->
+    <script type="importmap">
+    {
+      "imports": {
+        "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+        "vite": "https://aistudiocdn.com/vite@^7.2.7",
+        "react/": "https://aistudiocdn.com/react@^19.2.1/",
+        "react": "https://aistudiocdn.com/react@^19.2.1",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+        "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.2"
+      }
+    }
+    </script>
+    <script>
+      // Global error handler to help debug "white screen" issues
+      window.addEventListener('error', function(e) {
+        // Wait a bit to ensure React hasn't mounted
+        setTimeout(() => {
+          const root = document.getElementById('root');
+          if (root && root.innerHTML.trim() === '') {
+             const errDiv = document.createElement('div');
+             errDiv.style.color = '#ef4444';
+             errDiv.style.padding = '20px';
+             errDiv.style.background = '#0f172a';
+             errDiv.style.position = 'fixed';
+             errDiv.style.top = '0';
+             errDiv.style.left = '0';
+             errDiv.style.right = '0';
+             errDiv.style.zIndex = '9999';
+             errDiv.style.fontFamily = 'monospace';
+             errDiv.innerHTML = '<h3>Application Failed to Start</h3><p>Error: ' + e.message + '</p><p style="color:#94a3b8;font-size:0.8em">If deploying to GitHub Pages, ensure you have run "npm run build" and are deploying the "dist" folder, not the source code.</p>';
+             document.body.appendChild(errDiv);
+          }
+        }, 1000);
+      });
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

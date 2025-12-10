@@ -1,0 +1,9 @@
+{
+  "name": "SensorFusion AI",
+  "description": "A modern React web application demonstrating mobile sensor integration (Motion, Vision, Audio, Location) enhanced with Gemini AI for real-time data analysis and context understanding.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
